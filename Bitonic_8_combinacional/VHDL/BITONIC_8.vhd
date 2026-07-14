@@ -40,8 +40,8 @@ begin
         GEN_UP: if i = 0 or i = 2 generate
             CAS1_UP: entity work.CAS_UP
             port map(
-                D1 => DATA_SIGNAL(2*i),	D2 => DATA_SIGNAL(2*i+1),
-                Y1 => ETAPA_1(2*i),  	Y2 => ETAPA_1(2*i+1)
+                D1 => DATA_SIGNAL(2*i), D2 => DATA_SIGNAL(2*i+1),
+                Y1 => ETAPA_1(2*i),     Y2 => ETAPA_1(2*i+1)
             );
         end generate;
 
@@ -62,14 +62,14 @@ begin
             CAS1_UP: entity work.CAS_UP
             port map(
                 D1 => DATA_SIGNAL(i+4), D2 => DATA_SIGNAL(i+6),
-                Y1 => ETAPA_1(i+4),     Y2 => ETAPA_1(i+6)
+                Y1 => ETAPA_2(i+4),     Y2 => ETAPA_2(i+6)
             );
       
 
             CAS1_DOWN: entity work.CAS_DOWN
             port map(
                 D1 => DATA_SIGNAL(i), D2 => DATA_SIGNAL(i+2),
-                Y1 => ETAPA_1(i),     Y2 => ETAPA_1(i+2)
+                Y1 => ETAPA_2(i),     Y2 => ETAPA_2(i+2)
             );
         end generate;
     	
@@ -81,14 +81,14 @@ begin
             CAS1_UP: entity work.CAS_UP 
             port map(
                 D1 => DATA_SIGNAL(2*i+4), D2 => DATA_SIGNAL(2*i+5),
-                Y1 => ETAPA_1(2*i+4),     Y2 => ETAPA_1(2*i+5)
+                Y1 => ETAPA_3(2*i+4),     Y2 => ETAPA_3(2*i+5)
             );
       
 
             CAS1_DOWN: entity work.CAS_DOWN
             port map(
                 D1 => DATA_SIGNAL(2*i), D2 => DATA_SIGNAL(2*i+1),
-                Y1 => ETAPA_1(2*i),     Y2 => ETAPA_1(2*i+1)
+                Y1 => ETAPA_3(2*i),     Y2 => ETAPA_3(2*i+1)
             );
         end generate;
 	
@@ -100,7 +100,7 @@ begin
             CAS1_UP: entity work.CAS_UP 
             port map(
                 D1 => DATA_SIGNAL(i), D2 => DATA_SIGNAL(i+4),
-                Y1 => ETAPA_1(i),     Y2 => ETAPA_1(i+4)
+                Y1 => ETAPA_4(i),     Y2 => ETAPA_4(i+4)
             );
       
         end generate;
@@ -113,7 +113,7 @@ begin
             CAS1_UP_A: entity work.CAS_UP 
             port map(
                 D1 => DATA_SIGNAL(i), D2 => DATA_SIGNAL(i+2),
-                Y1 => ETAPA_1(i),     Y2 => ETAPA_1(i+2)
+                Y1 => ETAPA_5(i),     Y2 => ETAPA_5(i+2)
             );
   
 				CAS1_UP_B: entity work.CAS_UP 
@@ -132,7 +132,7 @@ begin
             CAS1_UP: entity work.CAS_UP 
             port map(
                 D1 => DATA_SIGNAL(2*i), D2 => DATA_SIGNAL(2*i+1),
-                Y1 => ETAPA_1(2*i),     Y2 => ETAPA_1(2*i+1)
+                Y1 => OUTPUT_SIGNAL(2*i),     Y2 => OUTPUT_SIGNAL(2*i+1)
             );
 				
         end generate;
