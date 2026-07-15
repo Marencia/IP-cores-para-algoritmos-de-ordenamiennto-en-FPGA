@@ -25,3 +25,5 @@ CONTRAS:
   - Camino crítico largo: Si el circuito es grande, el retraso total de propagación se acumula. Es decir, menor velocidad.
   - Throughput: Hasta que el circuito no termine de calcular por completo el dato actual y este se estabilice en la salida, no se puede ingresar un nuevo dato en la entrada.
   - Glitches: Como los caminos eléctricos internos tienen longitudes ligeramente distintas, las compuertas conmutan a destiempo. Esto genera transiciones falsas y consumo de energía.
+
+![RTL_viewer](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_combinacional/img/RTL_bitonic_coombinacional.png)
