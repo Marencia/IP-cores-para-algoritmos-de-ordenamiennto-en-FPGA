@@ -16,8 +16,9 @@ end BITONIC_8;
 
 architecture Behavior of BITONIC_8 is
 
-	--------Declaración de tipo de datos vector con elementos std_logic_vector--------
-
+	--================================================================================
+	-- Señales
+   --================================================================================
 	signal DATA_SIGNAL  : VEC_DATOS;
 	signal ETAPA_1		  : VEC_DATOS;
 	signal ETAPA_2		  : VEC_DATOS;
