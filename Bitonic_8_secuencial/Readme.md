@@ -13,5 +13,23 @@ siguientes comparaciones. Las flechas marcan si el elemento de mayor valor queda
 
 ## Bitonic secuencial ##
 
+El código presentado se realiza con lógica secuencial. Los PRO y CONTRA de este tipo de VHD son:
+
+PROS:
+
+- Frecuencia de reloj alta: El camino crític es la etapa coombinacional más lenta entre dos registros.  
+- Throughput: Por cada ciclo de reloj se ingresa una nueva serie de datos.  
+- Sin glitches: Los registros funcionan como filtros que no dejan pasar los glitches.  
+- Escalabilidad: Su estructura permite diseñar modelos de mayor dimensión.  
+
+CONTRAS:
+
+- Mayor latencia inicial: Un dato individual tarda más tiempo en salir, ya que pasa por cada registro y espera al pulso de clk.  
+- Mayor uso de recursos: No solo se utiliza la estructura combinnacional, sino que se le agregan los registros.  
 
   
+![RTL_viewer](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/RTL_bitonic_secuencial.png)  
+*RTL viewer*
+
+![Recursos](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/compilaci%C3%B3n_secuenciaaal.png)  
+*Recursos de compilación*
