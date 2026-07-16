@@ -24,18 +24,19 @@ architecture Behavior of BITONIC_8_S is
 	signal ETAPA_4		  : VEC_DATOS;
 	signal ETAPA_5		  : VEC_DATOS;
 	signal OUTPUT_SIGNAL: VEC_DATOS;
-	
-	----------------------------------------------------------------------------------
-    
-	signal r_etapa_1 : VEC_DATOS;
+
+   --================================================================================
+   -- SEÑALES DE REGISTROS INTERMEDIOS
+   --================================================================================
+   signal r_etapa_1 : VEC_DATOS;
    signal r_etapa_2 : VEC_DATOS;
    signal r_etapa_3 : VEC_DATOS;
    signal r_etapa_4 : VEC_DATOS;
    signal r_etapa_5 : VEC_DATOS;
    signal r_salida  : VEC_DATOS;
 
-begin
 
+begin
     --================================================================
     -- ETAPA 1: Combinacional
     --================================================================
@@ -43,49 +44,61 @@ begin
         GEN_UP: if i = 0 or i = 2 generate
             CAS1_UP: entity work.CAS_UP
             port map(
-                D1 => DATOS(2*i), D2 => DATOS(2*i+1),
-                Y1 => ETAPA_1(2*i), Y2 => ETAPA_1(2*i+1)
+                D1 => DATOS(2*i), 
+				D2 => DATOS(2*i+1),
+                Y1 => ETAPA_1(2*i), 
+				Y2 => ETAPA_1(2*i+1)
             );
         end generate;
 
         GEN_DOWN: if i = 1 or i = 3 generate
             CAS1_DOWN: entity work.CAS_DOWN
             port map(
-                D1 => DATOS(2*i), D2 => DATOS(2*i+1),
-                Y1 => ETAPA_1(2*i), Y2 => ETAPA_1(2*i+1)
+                D1 => DATOS(2*i), 
+				D2 => DATOS(2*i+1),
+                Y1 => ETAPA_1(2*i), 
+				Y2 => ETAPA_1(2*i+1)
             );
         end generate;
     end generate;
 
     --=====================================================================
-    -- ETAPA 2: Combinacional (Toma como entrada la salida del Registro 1)
+    -- ETAPA 2: Combinacional (Toma como entrada la salida del registro 1)
     --=====================================================================
     GEN_ETAPA_2: for i in 0 to 1 generate
         CAS2_DOWN: entity work.CAS_DOWN
         port map (
-            D1 => r_etapa_1(i), D2 => r_etapa_1(i+2),
-            Y1 => ETAPA_2(i), Y2 => ETAPA_2(i+2)
+            D1 => r_etapa_1(i), 
+			D2 => r_etapa_1(i+2),
+            Y1 => ETAPA_2(i), 
+			Y2 => ETAPA_2(i+2)
         );
         CAS2_UP: entity work.CAS_UP
         port map (
-            D1 => r_etapa_1(i+4), D2 => r_etapa_1(i+6),
-            Y1 => ETAPA_2(i+4), Y2 => ETAPA_2(i+6)
+            D1 => r_etapa_1(i+4), 
+			D2 => r_etapa_1(i+6),
+            Y1 => ETAPA_2(i+4), 
+			Y2 => ETAPA_2(i+6)
         );
     end generate;
 
     --====================================================================
-    -- ETAPA 3: Combinacional (Toma como entrada la salida del Registro 2)
+    -- ETAPA 3: Combinacional (Toma como entrada la salida del egistro 2)
     --====================================================================
     GEN_ETAPA_3: for i in 0 to 1 generate
         CAS3_DOWN: entity work.CAS_DOWN
         port map (
-            D1 => r_etapa_2(2*i), D2 => r_etapa_2(2*i+1),
-            Y1 => ETAPA_3(2*i), Y2 => ETAPA_3(2*i+1)
+            D1 => r_etapa_2(2*i), 
+			D2 => r_etapa_2(2*i+1),
+            Y1 => ETAPA_3(2*i), 
+			Y2 => ETAPA_3(2*i+1)
         );
         CAS3_UP: entity work.CAS_UP
         port map (
-            D1 => r_etapa_2(2*i+4), D2 => r_etapa_2(2*i+5),
-            Y1 => ETAPA_3(2*i+4), Y2 => ETAPA_3(2*i+5)
+            D1 => r_etapa_2(2*i+4), 
+			D2 => r_etapa_2(2*i+5),
+            Y1 => ETAPA_3(2*i+4), 
+			Y2 => ETAPA_3(2*i+5)
         );
     end generate;
 
@@ -95,8 +108,10 @@ begin
     GEN_ETAPA_4: for i in 0 to 3 generate
         CAS4_UP: entity work.CAS_UP
         port map (
-            D1 => r_etapa_3(i), D2 => r_etapa_3(i+4),
-            Y1 => ETAPA_4(i), Y2 => ETAPA_4(i+4)
+            D1 => r_etapa_3(i), 
+			D2 => r_etapa_3(i+4),
+            Y1 => ETAPA_4(i), 
+			Y2 => ETAPA_4(i+4)
         );
     end generate;
 
@@ -106,13 +121,17 @@ begin
     GEN_ETAPA_5: for i in 0 to 1 generate
         CAS5_UP_B1: entity work.CAS_UP
         port map (
-            D1 => r_etapa_4(i), D2 => r_etapa_4(i+2),
-            Y1 => ETAPA_5(i), Y2 => ETAPA_5(i+2)
+            D1 => r_etapa_4(i), 
+			D2 => r_etapa_4(i+2),
+            Y1 => ETAPA_5(i), 
+			Y2 => ETAPA_5(i+2)
         );
         CAS5_UP_B2: entity work.CAS_UP
         port map (
-            D1 => r_etapa_4(i+4), D2 => r_etapa_4(i+6),
-            Y1 => ETAPA_5(i+4), Y2 => ETAPA_5(i+6)
+            D1 => r_etapa_4(i+4), 
+			D2 => r_etapa_4(i+6),
+            Y1 => ETAPA_5(i+4), 
+			Y2 => ETAPA_5(i+6)
         );
     end generate;
 
@@ -122,8 +141,10 @@ begin
     GEN_ETAPA_6: for i in 0 to 3 generate
         CAS6_UP: entity work.CAS_UP
         port map (
-            D1 => r_etapa_5(2*i), D2 => r_etapa_5(2*i+1),
-            Y1 => OUTPUT_SIGNAL(2*i), Y2 => OUTPUT_SIGNAL(2*i+1)
+            D1 => r_etapa_5(2*i), 
+			D2 => r_etapa_5(2*i+1),
+            Y1 => OUTPUT_SIGNAL(2*i), 
+			Y2 => OUTPUT_SIGNAL(2*i+1)
         );
     end generate;
 
@@ -135,7 +156,7 @@ begin
     begin
         if rising_edge(clk) then
             if reset = '1' then
-                -- Inicialización de todos los registros en cero
+                -- Inicialización de todos los registros y bits en cero. 'Others' permite haceer todo cero sin depender de la dimensión.
                 r_etapa_1 <= (others => (others => '0'));
                 r_etapa_2 <= (others => (others => '0'));
                 r_etapa_3 <= (others => (others => '0'));
