@@ -33,3 +33,8 @@ CONTRAS:
 
 ![Recursos](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/compilaci%C3%B3n_secuenciaaal.png)  
 *Recursos de compilación*
+
+## Testbench ##
+
+![TB](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/TB_secuencial.png)  
+*Simulación*
