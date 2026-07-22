@@ -40,3 +40,5 @@ CONTRAS:
 *Simulación*  
 
 Se  puede observar en la simulación cómo la salida mestra los valores ordenados una  vez que pasaron los 6 ciclos de reloj tras recorrer las 6 etapas de CAS con registros intermedios.
+
+##
