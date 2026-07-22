@@ -14,3 +14,4 @@ El dato que ingresa a los CAS son de tipo vector y se encuentran declarados de l
 
       type VEC_DATOS is array (0 to N_DATOS - 1) of std_logic_vector(N_BITS-1 downto 0);
 
+##
