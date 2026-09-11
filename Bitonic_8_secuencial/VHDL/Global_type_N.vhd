@@ -12,7 +12,7 @@ package Global_types is
 	 function GET_FILA(fase_i  : integer; etapa_j : integer) return natural;
 	
     type VEC_DATOS is array (0 to N_DATOS - 1) of std_logic_vector(N_BITS-1 downto 0);
-    type VEC_ETAPAS is array (0 to N_ETAPAS(N_DATOS)-1) of VEC_DATOS; --invocados como VEC_ETAPAS(i)(j) con i=etapas y j=nro dato
+    type VEC_ETAPAS is array (0 to N_ETAPAS(N_DATOS)-1) of VEC_DATOS; --problema!
 	 type VEC_REGISTROS is array (0 to N_ETAPAS(N_DATOS)) of VEC_DATOS;
 	 
 end package Global_types;
