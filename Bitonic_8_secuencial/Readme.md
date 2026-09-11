@@ -42,3 +42,25 @@ CONTRAS:
 Se  puede observar en la simulación cómo la salida mestra los valores ordenados una  vez que pasaron los 6 ciclos de reloj tras recorrer las 6 etapas de CAS con registros intermedios.
 
 ##
+
+
+## Primer intento de parametrización ##
+
+Luego de corregir errores semánticos y sintácticos, se puso a prueba el algoritmo bitónico parametrizado para N elementos. Los errores pueden ser leídos en los commits de los códigos BITONIC_N_prueba y en Global_type_N.
+
+La simulación realizada en ModelSim (imagen debajo) no da los resultados esperados, por lo tanto, se procede a revisar el código.
+
+![MS](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/Prueba_parametrizaci%C3%B3n.png)  
+*Simulación RTL*
+
+
+![RTLV1](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/RTL_param_mal.png)  
+*RTL View Zoomout*
+
+![RTLV2](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/RTL_param_mal_zoom.png)  
+*RTL View Zoomin*
+
+
+
+
+
