@@ -24,10 +24,10 @@ architecture Behavior of BITONIC_8_S is
    --================================================================================ 
 	
 	signal R_ETAPAS_N: VEC_REGISTROS;
-   signal r_salida  : VEC_DATOS;
+   signal r_salida  :     VEC_DATOS;
 	
-	constant FASE_N 	 : natural := N_FASES(N_DATOS); -- constante con cantidad de fases (par N=8 son 3)
-	constant TOTAL_E	 : natural := N_FASES(N_DATOS); -- 
+	constant FASE_N 	 : natural :=  N_FASES(N_DATOS); -- constante con cantidad de fases (par N=8 son 3)
+	constant TOTAL_E	 : natural := N_ETAPAS(N_DATOS); -- 
 	
 begin
 
@@ -38,7 +38,7 @@ begin
 				  FOR_ETAPAS: for j in 0 to i generate
 										
 									constant fila   : natural := GET_FILA(i,j);
-									constant DIST_O : natural := 2 ** (i-j);
+									constant DIST_O : natural :=    2 ** (i-j);
 									
 									begin
 									FOR_XOR: for k in 0 to N_DATOS - 1 generate 
@@ -76,22 +76,20 @@ begin
     begin
         if rising_edge(clk) then
             if reset = '1' then
-					for s in 0 to TOTAL_E loop
-						for elem in 0 to N_DATOS - 1 loop
-						 -- Inicialización de todos los registros en cero
-							R_ETAPAS_N(s)(elem) <= (others => '0');
-						 end loop;
+					for s in 0 to TOTAL_E loop -- resetea hasta los registros de salida
+							R_ETAPAS_N(s) <= (others => (others => '0')); -- Inicialización de todos los registros en cero
 					end loop;
-					r_salida  <= (others => (others => '0'));
-		  else
+				else
 				-- Captura de datos en cada flanco de reloj
-					 R_ETAPAS_N(0) <= DATOS;
+				
+				for b in 0 to N_DATOS - 1 loop
+				   R_ETAPAS_N(0)(b) <= DATOS(b);
+				end loop;
+				
 				-- R intermedios
-                for s in 0 to TOTAL_E - 1 loop
-						R_ETAPAS_N(s + 1) <= ETAPAS_N(s);
-					 end loop; 
-				-- Registro final de salida
-					 r_salida  <= R_ETAPAS_N(TOTAL_E); 
+                for s in 0 to TOTAL_E - 1 loop -- carga hasta el registro etapa + 1 que voy a tomar como r_salida
+						R_ETAPAS_N(s + 1) <= ETAPAS_N(s); 
+					 end loop;
             end if;
         end if;
     end process;
@@ -99,6 +97,6 @@ begin
     --================================================================
     -- ASIGNACIÓN DE SALIDA FÍSICA
     --================================================================
-    SALIDA <= r_salida;
+    SALIDA <= R_ETAPAS_N(TOTAL_E);
 
 end Behavior;
