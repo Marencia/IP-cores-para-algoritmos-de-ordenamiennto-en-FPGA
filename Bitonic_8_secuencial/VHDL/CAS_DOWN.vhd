@@ -1,16 +1,13 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use work.Global_types.ALL;
 
 entity CAS_DOWN is
 
-	generic (
-			N : integer :=8
-		);
-		
 	port(
-		D1,D2 : in  std_logic_vector(N-1 downto 0);
-		Y1,Y2 : out std_logic_vector(N-1 downto 0)
+		D1,D2 : in  std_logic_vector(N_BITS-1 downto 0);
+		Y1,Y2 : out std_logic_vector(N_BITS-1 downto 0)
 	);
 	
 end CAS_DOWN;
