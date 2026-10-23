@@ -61,6 +61,23 @@ La simulación realizada en ModelSim (imagen debajo) no da los resultados espera
 *RTL View Zoomin*
 
 
+## Parametrización ##
+
+Luego de agregar un rising_edge(clk) en los TB luego de cada lote de prueba y revisar la carga de los registros, se pudieron resolver los inconvenientes planteados previamente. 
+
+Las simulaciones realizadas en ModelSim dan los resultados esperados.
+
+![RTL_P](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/RTL_simulation.png)  
+*Simulación RTL*
+
+![RTLV3](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/RTL_Viewer_N.png)  
+*RTL Viewer - 8 elementos 8 bits*
+
+![RTLV4](https://github.com/Marencia/IP-cores-para-algoritmos-de-ordenamiennto-en-FPGA/blob/main/Bitonic_8_secuencial/img/RTLViewer4.png)  
+*RTL Viewer - 16 elementos 4 bits*
+
+
+
 
 
 
